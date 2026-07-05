@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html><head><style id="qw-theme">:root {
+  --color-bg: #faf9fc;
+  --color-text: #131920;
+  --color-navbar-bg: #f9f9fb;
+  --color-bg-chat-view: #fcfcfd;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f9fafb;
+  --color-bg-hover: #f3f4f6;
+  --color-surface: #f9fafb;
+  --color-surface-hover: #f3f4f6;
+  --color-surface-active: #e5e7eb;
+  --color-border: rgba(0, 0, 0, .12);
+  --color-border-light: rgba(0, 0, 0, .06);
+  --color-border-strong: #d1d5db;
+  --color-primary: #4200db;
+  --color-primary-dark: #35009e;
+  --color-primary-light: #8575ff;
+  --color-primary-bg: #e8e6ff;
+  --color-primary-hover-border: #35009e;
+  --color-nav-icon-active: #4200db;
+  --color-nav-hover-border: #4200db;
+  --color-primary-alpha-3: color-mix(in srgb, #4200db 3%, transparent);
+  --color-primary-alpha-5: color-mix(in srgb, #4200db 5%, transparent);
+  --color-primary-alpha-8: color-mix(in srgb, #4200db 8%, transparent);
+  --color-primary-alpha-12: color-mix(in srgb, #4200db 12%, transparent);
+  --color-primary-alpha-15: color-mix(in srgb, #4200db 15%, transparent);
+  --color-primary-alpha-20: color-mix(in srgb, #4200db 20%, transparent);
+  --color-primary-alpha-25: color-mix(in srgb, #4200db 25%, transparent);
+  --color-primary-alpha-30: color-mix(in srgb, #4200db 30%, transparent);
+  --color-primary-alpha-40: color-mix(in srgb, #4200db 40%, transparent);
+  --color-primary-alpha-50: color-mix(in srgb, #4200db 50%, transparent);
+  --color-primary-alpha-60: color-mix(in srgb, #4200db 60%, transparent);
+  --color-primary-subtle: color-mix(in srgb, #4200db 12%, transparent);
+  --color-primary-border: color-mix(in srgb, #4200db 30%, transparent);
+  --color-focus-ring: color-mix(in srgb, #4200db 50%, transparent);
+  --color-sidebar-hover: color-mix(in srgb, #4200db 12%, transparent);
+  --color-accent: #4200db;
+  --color-accent-foreground: #4200db;
+  --color-accent-dark: #35009e;
+  --color-accent-light: #e8e6ff;
+  --color-accent-inverse: #ffffff;
+  --color-link: #4200db;
+  --color-primary-gradient-end: #e8e6ff;
+  --color-primary-bg-solid: #e8e6ff;
+  --color-user-bubble: #F3F3F7;
+  --color-user-bubble-text: #131920;
+  --color-text-secondary: #5e5e5e;
+  --color-text-tertiary: #656871;
+  --color-text-muted: #9ca3af;
+  --color-text-on-primary: #ffffff;
+  --color-success: #00802f;
+  --color-success-dark: #00471e;
+  --color-success-light: #d9ffd6;
+  --color-success-hover: #005c26;
+  --color-success-bg: #e6f5eb;
+  --color-success-border: #b3d9bf;
+  --color-success-foreground: #00802f;
+  --color-success-dark-foreground: #00471e;
+  --color-success-text: #00471e;
+  --color-error: #db0000;
+  --color-error-dark: #700000;
+  --color-error-light: #ffe0e0;
+  --color-error-hover: #ffe0e0;
+  --color-error-bg: #fceaea;
+  --color-error-border: #f2cccc;
+  --color-error-active-border: #db0000;
+  --color-error-foreground: #db0000;
+  --color-error-dark-foreground: #700000;
+  --color-error-inverse: #ffffff;
+  --color-error-text: #700000;
+  --color-warning: #f2b100;
+  --color-warning-dark: #573a00;
+  --color-warning-light: #fffbbd;
+  --color-warning-hover: #db9200;
+  --color-warning-bg: #fef7e6;
+  --color-warning-border: #f9dfa3;
+  --color-warning-foreground: #f2b100;
+  --color-warning-dark-foreground: #573a00;
+  --color-warning-inverse: #573a00;
+  --color-surface-warning: #fffbbd;
+  --color-text-warning: #573a00;
+  --color-info: #006ce0;
+  --color-info-dark: #002a66;
+  --color-info-light: #d1f1ff;
+  --color-info-hover: #003b8f;
+  --color-info-bg: #ebf3fc;
+  --color-info-border: #b3d1f0;
+  --color-info-foreground: #006ce0;
+  --color-info-dark-foreground: #002a66;
+  --color-info-inverse: #ffffff;
+  --color-overlay: rgba(0, 0, 0, .5);
+  --color-shadow: rgba(0, 0, 0, .08);
+  --color-hover: rgba(0, 0, 0, .05);
+  --color-tooltip-bg: rgba(0, 0, 0, .85);
+  --color-tooltip-text: #ffffff;
+  --color-voice-purple: #8575ff;
+  --color-voice-purple-dark: #4200db;
+  --color-voice-purple-light: #8575ff;
+  --color-voice-red: #db0000;
+  --color-voice-red-dark: #700000;
+  --color-voice-amber: #f2b100;
+  --color-voice-purple-glow: rgba(66, 0, 219, .4);
+  --color-voice-red-glow: rgba(219, 0, 0, .4);
+  --font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Menlo", "Consolas", monospace;
+  --text-2xs: .5625rem;
+  --text-xs: .625rem;
+  --text-sm: .6875rem;
+  --text-base: .75rem;
+  --text-md: .8125rem;
+  --text-lg: .875rem;
+  --text-xl: 1rem;
+  --text-2xl: 1.125rem;
+  --text-3xl: 1.25rem;
+  --text-4xl: 1.5rem;
+  --text-5xl: 2rem;
+  --spacing-1: calc(.25rem * 1);
+  --spacing-1-5: calc(.25rem * 1.5);
+  --spacing-2: calc(.25rem * 2);
+  --spacing-3: calc(.25rem * 3);
+  --spacing-4: calc(.25rem * 4);
+  --spacing-5: calc(.25rem * 5);
+  --spacing-6: calc(.25rem * 6);
+  --spacing-7: calc(.25rem * 7);
+  --spacing-8: calc(.25rem * 8);
+  --spacing-9: calc(.25rem * 9);
+  --spacing-10: calc(.25rem * 10);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-card: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 8px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
+  --color-success-bg-solid: #d9ffd6;
+  --color-error-bg-solid: #ffe0e0;
+  --color-error-border-solid: #ffe0e0;
+  --color-warning-bg-solid: #fffbbd;
+  --color-warning-text: #573a00;
+  --color-info-bg-solid: #d1f1ff;
+  --color-info-bg-solid-alt: #d1f1ff;
+  --color-info-text: #002a66;
+  --color-info-text-alt: #002a66;
+  --color-emerald: #10b981;
+  --color-teal: #4ecdc4;
+  --color-code-bg: #F3F3F7;
+  --color-code-header-bg: #f1f3f5;
+  --color-code-text: #24292e;
+  --color-code-border: #e1e4e8;
+  --color-code-muted: #6a737d;
+  --color-inline-code-bg: #F3F3F7;
+  --color-inline-code-text: #24292e;
+  --color-inline-code-border: #e1e4e8;
+  --color-scrollbar-thumb: #d1d5db;
+  --color-scrollbar-track: transparent;
+  --color-graph-node-text: #333333;
+  --color-graph-node-text-dim: #7F8C8D;
+  --color-graph-edge-default: #95A5A6;
+  --color-graph-edge-cross: #E67E22;
+  --color-graph-edge-text: #666666;
+  --color-graph-edge-stroke: #ffffff;
+  --color-graph-highlight-bg: #FF6B6B;
+  --color-graph-highlight-border: #E74C3C;
+  --color-graph-search-bg: #FFD700;
+  --color-graph-search-border: #FFA500;
+  --color-graph-focus-border: #C0392B;
+  --color-graph-external-border: #95A5A6;
+  --color-graph-cat-file: #3498DB;
+  --color-graph-cat-folder: #7F8C8D;
+  --color-graph-cat-file-aggregate: #2980B9;
+  --color-graph-cat-class: #9B59B6;
+  --color-graph-cat-function: #2ECC71;
+  --color-graph-cat-method: #1ABC9C;
+  --color-graph-cat-variable: #F39C12;
+  --color-graph-cat-import: #D35400;
+  --color-graph-cat-module: #5B6ABF;
+  --color-graph-cat-concept: #E74C3C;
+  --color-graph-cat-person: #FF6B6B;
+  --color-graph-cat-org: #4ECDC4;
+  --color-graph-cat-organization: #4ECDC4;
+  --color-graph-cat-product: #A29BFE;
+  --color-graph-cat-metric: #FD79A8;
+  --color-graph-cat-location: #34495E;
+  --color-graph-cat-date: #E056A0;
+  --color-graph-cat-code: #3498DB;
+  --color-graph-cat-doc: #7F8C8D;
+  --color-graph-cat-url: #00B894;
+  --color-graph-cat-email: #6C5CE7;
+  --color-graph-cat-unknown: #BDC3C7;
+  --color-graph-rel-contains: #BDC3C7;
+  --color-graph-rel-extends: #9B59B6;
+  --color-graph-rel-implements: #3498DB;
+  --color-graph-rel-imports: #E67E22;
+  --color-graph-rel-uses: #2ECC71;
+  --color-graph-rel-calls: #27AE60;
+  --color-graph-rel-references: #F39C12;
+  --color-graph-rel-related-to: #95A5A6;
+  --color-graph-rel-works-on: #E74C3C;
+  --color-graph-rel-owns: #1ABC9C;
+  --color-graph-rel-depends-on: #E67E22;
+  --color-graph-rel-parent-of: #BDC3C7;
+  --qs-content: #fff;
+  --qs-main: #fff;
+  --qs-primary-foreground: #131920;
+  --qs-secondary-foreground: #656871;
+  --qs-tertiary-foreground: #9ca3af;
+  --qs-placeholder-foreground: #8c8c94;
+  --qs-divider: #dedee3;
+  --qs-default-border: #8c8c94;
+  --qs-neutral-soft: #b4b4bb;
+  --qs-neutral-gray-50: #f9fafb;
+  --qs-tertiary-background: #f9fafb;
+  --qs-action-hover: #f3f3f7;
+  --qs-primary-default: #4200db;
+  --qs-primary-dark: #35009e;
+  --qs-primary-light: #e8e6ff;
+  --qs-success-default: #00802f;
+  --qs-error-default: #db0000;
+  --qs-font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --qs-font-family: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --qs-font-base-letter-spacing: .15px;
+  --qs-shadow-sm: 0 0 2px 0 #00000029, 0 0 4px 0 #00000029;
+  --qs-shadow-md: 0 0 2px 0 #00000029, 0 2px 8px 1px #00000029;
+  --qs-shadow-lg: 0 4px 16px 4px #00000029, 0 2px 6px 1px #00000029;
+  --qs-shadow-xl: 0 4px 8px 2px #00000029, 0 6px 20px 4px #00000029;
+  --qs-width-modal-sm: 384px;
+  --qs-width-modal-md: 600px;
+  --qs-width-modal-lg: 1136px;
+  --qs-grid-gap: 16px;
+  --qs-grid-gap-xl: 24px;
+  --qs-primary-medium: #8575ff;
+  --qs-primary-inverse: #fff;
+  --qs-neutral-lightest: #f9f9fb;
+  --qs-neutral-light: #f3f3f7;
+  --qs-neutral-default: #dedee3;
+  --qs-neutral-medium: #8c8c94;
+  --qs-neutral-deep: #656871;
+  --qs-neutral-dark: #333843;
+  --qs-neutral-strong: #131920;
+  --qs-neutral-white: #fff;
+  --qs-neutral-black: #000;
+  --qs-success-medium: #005c26;
+  --qs-success-dark: #00471e;
+  --qs-success-light: #d9ffd6;
+  --qs-success-inverse: #fff;
+  --qs-info-default: #006ce0;
+  --qs-info-medium: #003b8f;
+  --qs-info-dark: #002a66;
+  --qs-info-light: #d1f1ff;
+  --qs-info-inverse: #fff;
+  --qs-warning-default: #f2b100;
+  --qs-warning-medium: #db9200;
+  --qs-warning-dark: #573a00;
+  --qs-warning-light: #fffbbd;
+  --qs-warning-inverse: #573a00;
+  --qs-warning-experimental: #f2b100;
+  --qs-warning-experimental-light: #fffbbd;
+  --qs-warning-experimental-light-foreground: #fffbbd;
+  --qs-error-medium: #900;
+  --qs-error-dark: #700000;
+  --qs-error-light: #ffe0e0;
+  --qs-error-inverse: #fff;
+  --qs-connection-default: #db3300;
+  --qs-connection-soft: #ff997a;
+  --qs-connection-light: #ffe0d6;
+  --qs-connection-dark: #661800;
+  --qs-automation-default: #b3008f;
+  --qs-automation-medium: #d600ba;
+  --qs-automation-soft: #ff94f1;
+  --qs-automation-light: #ffe0fb;
+  --qs-automation-dark: #660052;
+  --qs-insight-default: #a000b8;
+  --qs-insight-soft: #f299ff;
+  --qs-insight-light: #fce6ff;
+  --qs-insight-dark: #590066;
+  --qs-visualization-default: #7300e5;
+  --qs-visualization-soft: #d4a8ff;
+  --qs-visualization-light: #f2e5ff;
+  --qs-visualization-dark: #45008a;
+  --qs-spice: #ff9800;
+  --qs-coachmark: #006ce0;
+  --qs-brand: #fff;
+  --qs-brand-foreground: #131920;
+  --qs-brand-navbar: #131920;
+  --qs-brand-navbar-foreground: #fff;
+  --qs-brand-navbar-light: #dedee3;
+  --qs-brand-navbar-dark: #000;
+  --qs-application-navbar: #4200db;
+  --qs-application-navbar-foreground: #fff;
+  --qs-application-navbar-light: #e8e6ff;
+  --qs-application-navbar-dark: #35009e;
+  --qs-dimension: #4200db;
+  --qs-dimension-foreground: #fff;
+  --qs-dimension-experimental: #4200db;
+  --qs-dimension-experimental-foreground: #4200db;
+  --qs-measure: #00802f;
+  --qs-measure-foreground: #fff;
+  --qs-measure-experimental: #f2b100;
+  --qs-measure-experimental-foreground: #f2b100;
+  --qs-content-inverse: #333843;
+  --qs-content-inverse-active: #131920;
+  --qs-secondary: #dedee3;
+  --qs-disabled: #8c8c94;
+  --qs-divider-light: #f3f3f7;
+  --qs-hover-border: #333843;
+  --qs-active-border: #4200db;
+  --qs-disabled-border: #dedee3;
+  --qs-error-border: #ffe0e0;
+  --qs-error-active-border: #db0000;
+  --qs-disabled-foreground: #b4b4bb;
+  --qs-primary-inverse-foreground: #fff;
+  --qs-error-foreground: #db0000;
+  --qs-contrast-foreground: #131920;
+  --qs-main-foreground: #131920;
+  --qs-main-secondary-foreground: #656871;
+  --qs-action-disabled: #f3f3f7;
+  --qs-action-active: #e8e6ff;
+  --qs-default-badge: #dedee3;
+  --qs-tag-default: #dedee3;
+  --qs-tag-soft-border: #b4b4bb;
+  --qs-focus-offset: 1px;
+  --qs-toggle-tile-sm: calc(.25rem * 8);
+  --qs-toggle-tile-md: calc(.25rem * 12);
+  --qs-toggle-tile-lg: calc(.25rem * 15);
+  --qs-shadow-pin-right: inset 4px 0 4px -4px #00000029;
+  --qs-shadow-pin-left: inset -4px 0 4px -4px #00000029;
+  --react-pdf-text-layer: 1;
+  --highlight-bg-color: rgba(180, 0, 170, 1);
+  --highlight-selected-bg-color: rgba(0, 100, 0, 1);
+  --react-pdf-annotation-layer: 1;
+  --annotation-unfocused-field-background: url("data:image/svg+xml;charset=UTF-8,<svg width='1px' height='1px' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' style='fill:rgba(0, 54, 255, 0.13);'/></svg>");
+  --input-focus-border-color: Highlight;
+  --input-focus-outline: 1px solid Canvas;
+  --input-unfocused-border-color: transparent;
+  --input-disabled-border-color: transparent;
+  --input-hover-border-color: black;
+  --link-outline: none;
+  color-scheme: light;
+}
+body { background: var(--color-bg); color: var(--color-text); }
+a { color: var(--color-link, var(--color-primary)); }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Trip London and Paris Sep 2026</title>
+<style>
+:root{--blue:#1F4E79;--bl:#E8F4FD;--bm:#2E75B6;--green:#2E7D32;--gl:#E8F5E9;--orange:#E65100;--ol:#FFF3E0;--red:#C62828;--rl:#FFEBEE;--purple:#6A1B9A;--pl:#F3E5F5;--grey:#546E7A;--gryl:#F5F7FA;--sf:#fff;--bg:#f8f9fb;--tx:#1a1a2e;--tx2:#4a5568;--txm:#a0aec0;--bd:#e2e8f0;--sh:0 4px 16px rgba(0,0,0,0.06);--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.5}
+.top{background:linear-gradient(135deg,var(--blue),var(--bm));color:#fff;padding:16px 24px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(31,78,121,0.3)}
+.top-in{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.top h1{font-size:18px;font-weight:700}.top .meta{font-size:12px;opacity:0.8;margin-top:2px}
+.cd{text-align:right}.cd .n{font-size:24px;font-weight:700}.cd .l{font-size:11px;opacity:0.7}
+.nw{background:var(--sf);border-bottom:1px solid var(--bd);position:sticky;top:68px;z-index:999}
+.nt{max-width:900px;margin:0 auto;display:flex;overflow-x:auto;padding:0 16px}
+.nb{padding:14px 20px;font-size:13px;font-weight:600;color:var(--txm);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s}
+.nb:hover{color:var(--tx)}.nb.on{color:var(--blue);border-bottom-color:var(--blue)}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px}
+.vw{display:none}.vw.on{display:block}
+.dc{background:var(--sf);border-radius:var(--r);margin:16px 0;overflow:hidden;border:1px solid var(--bd);transition:box-shadow 0.2s}
+.dc:hover{box-shadow:var(--sh)}
+.dh{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none}
+.dn{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.di{flex:1}.di h3{font-size:15px;font-weight:700;margin-bottom:1px}.di p{font-size:13px;color:var(--tx2)}
+.dcost{font-size:12px;font-weight:600;color:var(--green);background:var(--gl);padding:4px 10px;border-radius:20px}
+.chv{color:var(--txm);transition:transform 0.3s;font-size:12px;display:inline-block}
+.dc.open .chv{transform:rotate(180deg)}
+.db{display:none;border-top:1px solid var(--bd)}.dc.open .db{display:block}
+.ac{padding:16px 20px;border-bottom:1px solid var(--bd)}.ac:last-child{border-bottom:none}
+.at{display:inline-block;background:var(--bl);color:var(--blue);font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:6px}
+.atl{font-size:15px;font-weight:600;margin-bottom:6px}
+.ar{font-size:13px;color:var(--tx2);line-height:1.5;margin-bottom:10px;padding:8px 12px;background:var(--gryl);border-radius:8px;border-left:3px solid var(--bm)}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ap{font-size:12px;padding:8px 10px;border-radius:8px;background:var(--bg)}
+.ap .lb{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--txm);margin-bottom:2px}.ap .vl{color:var(--tx);line-height:1.4}
+.pb{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--purple);background:var(--pl);padding:3px 8px;border-radius:12px;margin-left:8px;font-weight:500}
+.cs{margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd)}
+.ct{font-size:12px;color:var(--blue);cursor:pointer;font-weight:500}.ct:hover{text-decoration:underline}
+.cl{margin-top:8px;display:none}.cl.sh{display:block}
+.cm{display:flex;gap:8px;margin:6px 0;padding:8px 10px;background:var(--gryl);border-radius:8px;font-size:12px}
+.ca{width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.ci{display:flex;gap:6px;margin-top:8px}
+.ci input{flex:1;border:1px solid var(--bd);border-radius:6px;padding:8px 10px;font-size:12px;outline:none}
+.ci input:focus{border-color:var(--blue)}
+.ci button{background:var(--blue);color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:12px;cursor:pointer;font-weight:500}
+.bc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.bk{background:var(--sf);border-radius:var(--r);padding:16px;text-align:center;border:1px solid var(--bd)}
+.bk .nm{font-size:14px;font-weight:600;margin-bottom:2px}
+.bk .am{font-size:22px;font-weight:800;color:var(--blue)}
+.bk .sb{font-size:11px;color:var(--txm);margin-top:4px}
+.bt{text-align:center;padding:14px;background:var(--gl);border-radius:var(--r);margin-bottom:16px}
+.ti{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--sf);border-radius:var(--r);margin:8px 0;border:1px solid var(--bd)}
+.ti.u{border-left:4px solid var(--red)}.ti.s{border-left:4px solid var(--orange)}.ti.b{border-left:4px solid var(--blue)}
+.cb{width:22px;height:22px;border:2px solid var(--bd);border-radius:6px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.cb.ck{background:var(--green);border-color:var(--green);color:#fff}
+.tt{font-size:14px;font-weight:500}.tm{font-size:12px;color:var(--txm);margin-top:4px}
+.tg{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;margin-right:6px}
+.tg-r{background:var(--rl);color:var(--red)}.tg-o{background:var(--ol);color:var(--orange)}.tg-b{background:var(--bl);color:var(--blue)}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ic{background:var(--sf);border-radius:var(--r);padding:16px;border:1px solid var(--bd)}
+.ic h4{font-size:13px;color:var(--txm);margin-bottom:8px}.ic li{padding:3px 0;font-size:13px;color:var(--tx2);list-style:none}
+@media(max-width:640px){.top-in{flex-direction:column;align-items:flex-start}.cd{text-align:left}.ag{grid-template-columns:1fr}.ig{grid-template-columns:1fr}.bc{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in"><div><h1>✈ London &amp; Paris Family Trip</h1><div class="meta">14-25 Sep 2026 | Josh, Jess, Phek Wei, Hana, Edison + kids</div></div><div class="cd"><div class="n" id="cdnum">--</div><div class="l">days to go</div></div></div></div>
+<div class="nw"><div class="nt"><div class="nb on" data-v="itin">📅 Itinerary</div><div class="nb" data-v="budget">💰 Budget</div><div class="nb" data-v="todos">☑ To Do</div><div class="nb" data-v="info">ℹ️ Essentials</div></div></div>
+<div class="wrap">
+<div class="vw on" id="v-itin"></div>
+<div class="vw" id="v-budget"></div>
+<div class="vw" id="v-todos"></div>
+<div class="vw" id="v-info"></div>
+</div>
+<script>
+(function(){
+"use strict";
+var comments={};
+var DAYS=[
+{day:1,date:"14 Sep (Mon)",loc:"KUL to London",color:"#1F4E79",summary:"Fly in, settle, crash early",cost:"~GBP 135",acts:[
+{time:"16:35",title:"Arrive Heathrow T4 (MH004)",how:"Piccadilly Line to Green Park, Jubilee to Waterloo. ~1hr. GBP 5.90/adult.",tickets:"Buy Oyster at T4. Kids under 11 FREE.",tips:"Load GBP 50/adult. Contactless also works.",rationale:"Landing at 4:35pm means you wont reach the flat until ~6:30pm. Too late for any real sightseeing. Just settle in and sleep off the 13-hour jet lag.",cost:"~GBP 35",photo:false},
+{time:"19:00",title:"Light dinner near flat",how:"Walk. The Cut, Lower Marsh, or delivery.",tickets:"No booking needed.",tips:"Flat Iron (GBP 12 steak) on The Cut. Or just Uber Eats.",rationale:"After 13 hours of flying, 8pm London time is 3am on your body clock. Kids will be zombies. Keep it simple - quick eat then crash. Tomorrow is the big day!",cost:"~GBP 100",photo:false}
+]},
+{day:2,date:"15 Sep (Tue)",loc:"London",color:"#C62828",summary:"Guards, Tower, Eye, Lion King!",cost:"~GBP 1100+",acts:[
+{time:"10:30-11:45",title:"Buckingham Palace - Changing of the Guard",how:"Tube: Waterloo to Green Park (2 stops). Position on The Mall.",tickets:"FREE! Ceremony at 11am. Runs Tue/Thu/Sat - Tuesday is ON! Arrive by 10:30 for a good spot.",tips:"Arrive 10:30. The Mall = best view of mounted cavalry.",rationale:"Tuesday is a ceremony day (Tue/Thu/Sat schedule). Kids will love the horses, bands, bearskin hats. The Mall for mounted cavalry. FREE and unforgettable!",cost:"FREE",photo:true},
+{time:"12:00-14:30",title:"Tower of London",how:"Tube: Green Park to Tower Hill.",tickets:"hrp.org.uk. Adult GBP 33.10 / Child GBP 18.50 / Under 5 FREE.",tips:"Crown Jewels FIRST (queue builds from 10:30). Beefeater tours every 30 min.",rationale:"THE must-do in London. Crown Jewels alone are worth the price of admission, and the Beefeater tours are genuinely hilarious (they are comedians in uniform). Kids will be fascinated by armour, swords, and the legendary ravens. Do this on Day 2 while energy and excitement are at peak.",cost:"~GBP 206",photo:true},
+{time:"14:30-15:30",title:"Tower Bridge + Lunch",how:"Walk (next door to Tower).",tickets:"Walking FREE. Glass floor: GBP 12.30 adult.",tips:"Lunch at Shad Thames (south side).",rationale:"Walking across with Thames below = proper London moment. Glass floor fun for braver kids.",cost:"~GBP 80",photo:true},
+{time:"16:00-17:00",title:"London Eye",how:"Walk Southbank west (~20 min) or Tube to Waterloo.",tickets:"londoneye.com. Adult GBP 29 / Child GBP 26 (advance).",tips:"4pm = shorter queues + golden hour light.",rationale:"Late afternoon = shorter queues AND beautiful golden hour light for stunning photos. Kids will be mesmerised spotting all the landmarks from above. After all the walking, this is a blissful calm 30-minute sit-down in the sky.",cost:"~GBP 208",photo:true},
+{time:"17:30-19:00",title:"Covent Garden",how:"Tube to Covent Garden or walk via Embankment.",tickets:"Free street performers.",tips:"Lyceum Theatre 3 min walk. Pre-theatre snack here.",rationale:"Street performers are world-class. Perfect pre-theatre warm-up since Lyceum is 3 min away.",cost:"~GBP 50",photo:false},
+{time:"19:30-22:00",title:"The Lion King (West End)",how:"Lyceum Theatre, Wellington St. 3 min from Covent Garden.",tickets:"thelionking.co.uk. GBP 40-150/person. Book Dress Circle.",tips:"Arrive 30 min early. Booster seats available.",rationale:"THE family show. The Circle of Life opening number - with life-sized puppets parading down the aisles around you - will give you actual goosebumps. Both Alexis and Yan Xin will be completely spellbound. Book Dress Circle for the full spectacle.",cost:"~GBP 560-1050",photo:false}
+]},
+{day:3,date:"16 Sep (Wed)",loc:"Day Tour",color:"#E65100",summary:"Stonehenge + Bath (full day coach)",cost:"~GBP 655",acts:[
+{time:"07:30-20:00",title:"Stonehenge + Bath Day Tour",how:"Coach from Victoria. Guided all day.",tickets:"stonehengevisit.co.uk. Adult ~GBP 85 / Child ~GBP 75.",tips:"Windsor CLOSED Wed! Book Stonehenge+Bath only. iPad for kids on coach.",rationale:"Bucket-list attraction with zero logistical stress - they drive, they park, they guide you. Bath is stunningly beautiful Georgian architecture plus actual Roman hot springs (2000 years old!). Long day but coach naps on the way back save the kids.",cost:"~GBP 655",photo:true}
+]},
+{day:4,date:"17 Sep (Thu)",loc:"London to Nottinghamshire",color:"#6A1B9A",summary:"Drive to Hodsock Priory (wedding)",cost:"~GBP 255",acts:[
+{time:"07:30",title:"Pick up car (Enterprise Waterloo)",how:"1-3 Addington St, SE1 7RY. 5 min walk.",tickets:"enterprise.co.uk. 7-seater + 2 boosters.",tips:"Leave by 7:45am. Paperwork 15 min.",rationale:"Need to arrive Hodsock by 11am. Drive ~2h50m on M1. 8am departure = solid buffer.",cost:"~GBP 200 (2-day)",photo:false},
+{time:"08:00-11:00",title:"Drive to Hodsock Priory",how:"M1 north, A1(M), A614 to Blyth. S81 0TY.",tickets:"None.",tips:"Service stop ~1.5hrs (Donington Park J23A). Fuel up in London.",rationale:"Straightforward motorway. Last 20 min countryside A-roads. Watch M1 speed cameras.",cost:"~GBP 55",photo:false}
+]},
+{day:5,date:"18 Sep (Fri)",loc:"Notts to Windsor to London",color:"#AD1457",summary:"Windsor Castle on the drive back",cost:"~GBP 350",acts:[
+{time:"09:00-11:30",title:"Drive to Windsor Castle",how:"A1(M) south, M1, M25 west, M4 J6. ~2.5 hrs.",tickets:"hrp.org.uk/windsor-castle. Adult GBP 33 / Child GBP 19.50 / Under 5 FREE.",tips:"Park at King Edward VII. Open Fri 10am-4pm (last entry 3pm).",rationale:"Windsor is literally ON THE WAY home via M25/M4 - barely 15 minutes detour. Its a working royal palace (the King actually lives here!) with incredible State Apartments. Queen Mary Dolls House is insanely detailed - kids will be amazed at the tiny working plumbing and electricity.",cost:"~GBP 195",photo:true},
+{time:"14:30-15:30",title:"Drive to London, return car",how:"M4 east, A4 to SE1. ~45-60 min.",tickets:"Pay GBP 15 congestion charge at tfl.gov.uk by midnight!",tips:"Fuel up before return. Set reminder for congestion charge!",rationale:"Arrive before Friday rush hour. GBP 160 fine if you forget congestion charge!",cost:"~GBP 55",photo:false},
+{time:"16:00+",title:"Rest / Borough Market / pub",how:"Walk (~10 min from flat).",tickets:"None.",tips:"Market closes 5pm Fri. Otherwise any local pub.",rationale:"Easy evening after driving all day. Borough Market is a treat if before 5.",cost:"~GBP 100",photo:false}
+]},
+{day:6,date:"19 Sep (Sat)",loc:"London",color:"#2E7D32",summary:"Museums + Hyde Park (all FREE!)",cost:"~GBP 140",acts:[
+{time:"09:30-12:00",title:"Natural History Museum",how:"Tube: Waterloo to South Kensington (~15 min).",tickets:"FREE ENTRY. No booking needed.",tips:"Use Exhibition Road entrance (shorter queue). Dinosaurs packed by 11am.",rationale:"Relaxed final London day before heading to Paris tomorrow. No time pressure, no tickets to rush for. World-class FREE museum where kids will LOVE the animatronic T-Rex (genuinely scary!) and the earthquake simulator. Perfect wind-down after the Nottingham/Windsor driving adventures.",cost:"FREE",photo:true},
+{time:"12:00-13:00",title:"Lunch (South Kensington)",how:"Walk. Exhibition Rd / Thurloe St.",tickets:"None.",tips:"V&A Cafe is beautiful. Avoid Cromwell Rd tourist traps.",rationale:"Quick refuel between museums. Keep it light so kids stay energetic.",cost:"~GBP 70",photo:false},
+{time:"13:30-15:30",title:"Science Museum - Wonderlab",how:"Next door (2 min walk).",tickets:"FREE entry. Wonderlab: GBP 10/person, sciencemuseum.org.uk",tips:"Book 2-3 weeks ahead. The Garden gallery is great for under 6s.",rationale:"THE best hands-on science experience for kids. Pulling levers, making explosions, learning without realising.",cost:"~GBP 70",photo:false},
+{time:"16:00-17:30",title:"Hyde Park - Diana Playground",how:"Walk from Science Museum (~5 min).",tickets:"FREE.",tips:"Giant pirate ship! Open until 5:45pm.",rationale:"After 5hrs in museums, kids need to RUN. Epic playground (pirate ship, teepees). Adults can just sit and breathe.",cost:"FREE",photo:true}
+]},
+{day:7,date:"20 Sep (Sat)",loc:"London to Paris",color:"#1F4E79",summary:"Eurostar to Paris, Eiffel Tower views",cost:"~GBP 605",acts:[
+{time:"12:00",title:"Eurostar from St Pancras",how:"Tube: Waterloo to Kings Cross (Northern Line, 5 min).",tickets:"eurostar.com. From GBP 39/adult. Kids discounted.",tips:"Arrive 11am (1hr before). Passports! Check-in closes 30 min before.",rationale:"Midday departure means a proper lazy brunch morning in London - no 6am alarm, no rushing with bags. Eurostar is the best way to Paris with kids: no airport security drama, city centre to city centre in just 2h16m, and kids absolutely love the train going underwater through the Channel Tunnel!",cost:"~GBP 400-550",photo:false},
+{time:"14:30",title:"Arrive Paris, taxi to Airbnb",how:"Taxi from Gare du Nord (~EUR 35). Flat: Rue Daumier, 15th.",tickets:"Buy Navigo Easy at Gare du Nord.",tips:"7 people + luggage = taxi worth it vs metro.",rationale:"Get settled fast. Quiet residential area near the Seine.",cost:"~GBP 30",photo:false},
+{time:"16:00-18:30",title:"Champ de Mars + Eiffel Tower views",how:"Walk from flat (~15-20 min) or Metro Line 6 Bir-Hakeim.",tickets:"Free! Save summit for tomorrow.",tips:"Pont de Bir-Hakeim = best photo angle. Kids run on lawns.",rationale:"Easy first afternoon. Free views from below are spectacular. Trocadero for THE classic photo.",cost:"~GBP 45",photo:true},
+{time:"19:00",title:"Dinner: Rue du Commerce",how:"Walk (~10-15 min from flat).",tickets:"No booking needed.",tips:"Authentic Parisian street (not touristy). Good prices.",rationale:"Real Parisian dining where locals eat. Half the price of tourist areas.",cost:"~GBP 130",photo:false}
+]},
+{day:8,date:"21 Sep (Sun)",loc:"Paris",color:"#2E7D32",summary:"Eiffel Summit, Seine Cruise, Luxembourg",cost:"~GBP 325",acts:[
+{time:"09:00-11:30",title:"Eiffel Tower Summit",how:"Walk or Metro Line 6 Bir-Hakeim.",tickets:"BOOK 60 DAYS AHEAD at ticket.toureiffel.paris! Summit: Adult EUR 36.70 / Child EUR 9.20.",tips:"Book ON ~22 JULY. 9am slot. Summit cold/windy, bring layers.",rationale:"THE Paris moment. Standing at the summit with the entire city spread below you is genuinely breathtaking - you can see for 70km on a clear day. Book the 9am slot for the quietest experience. The kids will remember this forever. Worth every penny of the steep ticket price.",cost:"~GBP 180",photo:true},
+{time:"12:00-13:00",title:"Picnic from Rue Cler",how:"Walk to Rue Cler (~10 min from tower).",tickets:"None.",tips:"Baguettes, cheese, ham, fruit. Picnic on Champ de Mars. Shops close 1pm Sun!",rationale:"Picnic is the Parisian way: cheaper, tastier, more authentic. Lawn with Eiffel Tower above = core memory.",cost:"~GBP 50",photo:true},
+{time:"14:00-15:00",title:"Seine River Cruise",how:"Walk to Pont de Alma (~15 min from Champ de Mars).",tickets:"bateaux-mouches.fr. Adult ~EUR 13 / Child ~EUR 6.",tips:"Online = EUR 3 discount. Upper deck. Departs every 30-45 min.",rationale:"After morning walking, sitting on a boat = bliss. Notre-Dame, Louvre gliding past. Kids love boats. Adults love sitting.",cost:"~GBP 70",photo:true},
+{time:"15:30-17:30",title:"Jardin du Luxembourg",how:"Metro to Luxembourg. ~20 min.",tickets:"FREE. Playground EUR 3.50/child. Sailboats EUR 5.",tips:"Fenced playground. Toy sailboats on pond = classic Paris.",rationale:"Beautiful park. Kids: zip lines, sailboats, carousel. Adults relax by Medici Fountain.",cost:"~GBP 25",photo:true}
+]},
+{day:9,date:"22 Sep (Mon)",loc:"Disneyland Paris",color:"#6A1B9A",summary:"Full day Disney! World of Frozen NEW!",cost:"~GBP 616",acts:[
+{time:"07:30",title:"Travel to Disneyland",how:"Metro L10 to Chatelet, RER A to Marne-la-Vallee. ~50 min.",tickets:"RER A: EUR 2.55/adult, EUR 1.30/child.",tips:"MUST take Marne-la-Vallee direction. Buy return too.",rationale:"Monday = shorter queues. Leave early for gates opening. Hit Frozen before 90+ min queue.",cost:"~GBP 22",photo:false},
+{time:"09:30-21:00",title:"Disneyland Paris (2 Parks)",how:"Walk from RER through Disney Village (~5 min).",tickets:"attractiontickets.com. Adult ~GBP 86 / Child ~GBP 82.",tips:"Download DLP app. Frozen + Big Thunder at opening. Stay for 9pm fireworks!",rationale:"Monday = shortest queues of the week. World of Frozen (brand NEW for 2026!) will be THE highlight of the entire trip for the kids. With a 5 and 7 year old, Disneyland is pure concentrated magic. Exhausting but absolutely unforgettable - stay for the 9pm fireworks spectacular.",cost:"~GBP 594",photo:true}
+]},
+{day:10,date:"23 Sep (Tue)",loc:"Paris",color:"#E65100",summary:"Montmartre + Aquarium",cost:"~GBP 290",acts:[
+{time:"09:30-12:30",title:"Montmartre + Sacre-Coeur",how:"Metro L12 to Abbesses. ~30 min from flat.",tickets:"Sacre-Coeur FREE. Dome EUR 7. Funicular EUR 2.15.",tips:"Funicular up. Basilica first. AVOID portrait artist pressure.",rationale:"Different Paris: cobbled lanes, artists, accordion music. Panoramic view rivals Eiffel Tower.",cost:"~GBP 50",photo:true},
+{time:"13:00-14:00",title:"Lunch in Montmartre",how:"Rue Lepic or Rue des Abbesses (NOT Place du Tertre!).",tickets:"None.",tips:"Place du Tertre = tourist trap. 2 streets away = half price, double quality.",rationale:"Knowing where NOT to eat is the key.",cost:"~GBP 85",photo:false},
+{time:"15:00-17:00",title:"Aquarium de Paris",how:"Metro to Trocadero. ~20 min.",tickets:"aquariumdeparis.com. Adult EUR 27.50 / Child EUR 20.50.",tips:"1.5-2 hrs. Air-conditioned. Shark tunnel highlight.",rationale:"Air-conditioned cool-down. Kids love aquariums. Eiffel Tower photo right outside when leaving.",cost:"~GBP 155",photo:false}
+]},
+{day:11,date:"24 Sep (Wed)",loc:"Paris",color:"#AD1457",summary:"Le Marais, Jardin Acclimatation, farewell",cost:"~GBP 325",acts:[
+{time:"10:00-13:00",title:"Le Marais + Shopping",how:"Metro to Chatelet, walk to Le Marais. ~25 min.",tickets:"Free to explore.",tips:"L As du Fallafel (Rue des Rosiers). Place des Vosges is gorgeous.",rationale:"Paris coolest neighbourhood. Historic beauty, amazing food, great shopping. Relaxed final day.",cost:"~GBP 85",photo:true},
+{time:"14:00-17:00",title:"Jardin d Acclimatation",how:"Metro L1 to Les Sablons. ~35 min.",tickets:"Entry EUR 7/person. Rides EUR 2.90 each.",tips:"Buy ticket books (better value). Skip if raining.",rationale:"Gentle amusement park: carousel, mini train, bumper cars, puppets. Low-key final treat for kids.",cost:"~GBP 85",photo:false},
+{time:"19:00",title:"Farewell dinner",how:"Saint-Germain (Metro to Odeon) or local 15th.",tickets:"Book if popular spot.",tips:"Cafe de Flore or Les Deux Magots for iconic experience.",rationale:"Celebratory final night. Long French dinner with wine, cheese, dessert. Soak in Paris.",cost:"~GBP 155",photo:false}
+]},
+{day:12,date:"25 Sep (Thu)",loc:"Paris to KUL",color:"#546E7A",summary:"Fly home (MH021, 11:20am CDG)",cost:"~GBP 95",acts:[
+{time:"07:15",title:"Taxi to CDG Terminal 2A",how:"Pre-book 2 taxis. Flat rate EUR 55/taxi. ~50-60 min.",tickets:"Book G7 app or ask Airbnb host.",tips:"Pack night before! Wake 6:30am. Final croissant at CDG.",rationale:"MH021 departs 11:20am. Need 2.5hrs before. Taxi ~1hr. Leave 7:15am.",cost:"~GBP 95",photo:false}
+]}
+];
+var BUDGET=[{p:"Josh",a:1439,s:"incl. Alexis"},{p:"Jess",a:873,s:""},{p:"Phek Wei",a:1477,s:"incl. Yan Xin"},{p:"Hana",a:873,s:""},{p:"Edison",a:873,s:""}];
+var TODOS=[
+{t:"Book Lion King tickets (7 seats)",d:"ASAP",w:"Josh",u:"u"},
+{t:"Book Eurostar London-Paris (20 Sep)",d:"ASAP",w:"Josh",u:"u"},
+{t:"Book car rental: 7-seater + 2 boosters",d:"ASAP",w:"Josh",u:"u"},
+{t:"Book Stonehenge + Bath tour (16 Sep)",d:"ASAP",w:"Josh",u:"u"},
+{t:"Book Disneyland Paris tickets (22 Sep)",d:"ASAP",w:"Josh",u:"u"},
+{t:"Book Eiffel Tower summit (21 Sep)",d:"~22 July (60 days ahead)",w:"Josh",u:"s"},
+{t:"Book Tower of London (15 Sep)",d:"1-2 weeks before",w:"Josh",u:"s"},
+{t:"Book London Eye 4pm (15 Sep)",d:"1-2 weeks before",w:"Josh",u:"s"},
+{t:"Book Windsor Castle (18 Sep)",d:"1-2 weeks before",w:"Josh",u:"s"},
+{t:"Book Wonderlab Science Museum (19 Sep)",d:"2-3 weeks before",w:"Josh",u:"s"},
+{t:"Check all 7 passports (6+ months validity)",d:"Now",w:"Everyone",u:"b"},
+{t:"Buy travel insurance (7 pax)",d:"2-4 weeks before",w:"Josh",u:"b"},
+{t:"Buy UK + France power adapters",d:"Before trip",w:"Josh",u:"b"},
+{t:"Download offline maps + Citymapper",d:"Day before",w:"Everyone",u:"b"},
+{t:"Download Disneyland Paris app",d:"Day before Disney",w:"Everyone",u:"b"},
+{t:"Pre-book 2 CDG taxis (25 Sep 7:15am)",d:"2 days before",w:"Josh",u:"b"}
+];
+
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML;}
+
+function buildItin(){
+var h="";
+for(var i=0;i<DAYS.length;i++){
+var d=DAYS[i];
+h+='<div class="dc" id="dc'+d.day+'"><div class="dh" data-d="'+d.day+'">';
+h+='<div class="dn" style="background:'+d.color+'">Day '+d.day+'</div>';
+h+='<div class="di"><h3>'+esc(d.date)+" - "+esc(d.loc)+'</h3><p>'+esc(d.summary)+'</p></div>';
+h+='<div class="dcost">'+esc(d.cost)+'</div><span class="chv">&#9660;</span></div>';
+h+='<div class="db">';
+for(var j=0;j<d.acts.length;j++){
+var a=d.acts[j];
+var k=i+"_"+j;
+var cl=comments[k]||[];
+h+='<div class="ac">';
+h+='<div class="at">'+esc(a.time)+'</div>';
+h+='<div class="atl">'+esc(a.title)+(a.photo?' <span class="pb">&#128247; Photo spot</span>':'')+'</div>';
+h+='<div class="ar">&#128161; '+esc(a.rationale)+'</div>';
+h+='<div class="ag">';
+h+='<div class="ap"><div class="lb">Getting there</div><div class="vl">'+esc(a.how)+'</div></div>';
+h+='<div class="ap"><div class="lb">Tickets</div><div class="vl">'+esc(a.tickets)+'</div></div>';
+h+='<div class="ap"><div class="lb">Tips</div><div class="vl">'+esc(a.tips)+'</div></div>';
+h+='<div class="ap"><div class="lb">Cost</div><div class="vl">'+esc(a.cost)+'</div></div>';
+h+='</div>';
+h+='<div class="cs"><span class="ct" data-k="'+k+'">&#128172; '+(cl.length>0?cl.length+' comment'+(cl.length>1?'s':''):'Add comment')+'</span>';
+h+='<div class="cl" id="cl'+k+'">';
+for(var c=0;c<cl.length;c++){
+h+='<div class="cm"><div class="ca">'+esc(cl[c].n.charAt(0))+'</div><div><b style="font-size:11px">'+esc(cl[c].n)+'</b><div style="color:var(--tx2);margin-top:2px">'+esc(cl[c].t)+'</div></div></div>';
+}
+h+='<div class="ci"><input id="in'+k+'" placeholder="Your comment..."><button data-k="'+k+'" class="pb2">Post</button></div>';
+h+='</div></div></div>';
+}
+h+='</div></div>';
+}
+document.getElementById("v-itin").innerHTML=h;
+}
+
+function buildBudget(){
+var total=0;
+var h='<h2 style="font-size:18px;margin-bottom:16px">Cost Per Person (GBP)</h2><div class="bc">';
+for(var i=0;i<BUDGET.length;i++){
+var b=BUDGET[i];total+=b.a;
+h+='<div class="bk"><div class="nm">'+esc(b.p)+'</div><div class="am">GBP '+b.a.toLocaleString()+'</div>'+(b.s?'<div class="sb">'+esc(b.s)+'</div>':'')+'</div>';
+}
+h+='</div><div class="bt"><div style="font-size:16px;font-weight:700;color:var(--green)">Grand Total: GBP '+total.toLocaleString()+'</div><div style="font-size:12px;color:var(--txm);margin-top:4px">Excludes flights &amp; accommodation (pre-booked)</div></div>';
+document.getElementById("v-budget").innerHTML=h;
+}
+
+function buildTodos(){
+var h='<h2 style="font-size:18px;margin-bottom:16px">Action Items</h2>';
+for(var i=0;i<TODOS.length;i++){
+var t=TODOS[i];
+var cls=t.u==="u"?"u":t.u==="s"?"s":"b";
+var tc=t.u==="u"?"tg-r":t.u==="s"?"tg-o":"tg-b";
+var tl=t.u==="u"?"BOOK ASAP":t.u==="s"?"1-4 weeks":"Before trip";
+h+='<div class="ti '+cls+'"><div class="cb" data-i="'+i+'"></div><div><div class="tt">'+esc(t.t)+'</div><div class="tm"><span class="tg '+tc+'">'+tl+'</span> '+esc(t.d)+' | '+esc(t.w)+'</div></div></div>';
+}
+document.getElementById("v-todos").innerHTML=h;
+}
+
+function buildInfo(){
+var h='<h2 style="font-size:18px;margin-bottom:16px">Essential Info</h2><div class="ig">';
+h+='<div class="ic"><h4>&#127968; Accommodation</h4><li><b>London (6 nights):</b> County Street flat 59, SE1. Near Waterloo.</li><li><b>Paris (5 nights):</b> Rue Daumier, 15th arr. Near Metro Charles Michels. 15 min walk to Eiffel Tower.</li></div>';
+h+='<div class="ic"><h4>&#9992; Flights</h4><li><b>Out:</b> MH004, KUL 09:50 &rarr; LHR T4 16:35 (14 Sep)</li><li><b>Return:</b> MH021, CDG T2A 11:20 &rarr; KUL 06:10+1 (25 Sep)</li></div>';
+h+='<div class="ic"><h4>&#9925; Weather (Sep)</h4><li>London: 12-20&deg;C. Pack light jacket.</li><li>Paris: 13-21&deg;C. Layers recommended.</li><li>Comfortable walking shoes essential!</li></div>';
+h+='<div class="ic"><h4>&#128268; Power Adapters</h4><li>UK: 3-pin plug (Type G)</li><li>France: 2-pin round (Type C/E)</li><li>Buy universal adapter</li></div>';
+h+='<div class="ic"><h4>&#128222; Emergency</h4><li>UK Emergency: 999 (or 112)</li><li>France Emergency: 112</li><li>MY Embassy London: +44 20 7235 8033</li><li>MY Embassy Paris: +33 1 45 53 11 85</li></div>';
+h+='<div class="ic"><h4>&#128101; The Crew</h4><li>Josh &amp; Jess + Alexis (5yo)</li><li>Phek Wei &amp; Hana + Yan Xin (7yo)</li><li>Edison</li><li><b>Total: 5 adults + 2 children</b></li></div>';
+h+='</div>';
+document.getElementById("v-info").innerHTML=h;
+}
+
+// countdown
+var trip=new Date(2026,8,14);
+var now=new Date();
+var diff=Math.ceil((trip-now)/(86400000));
+document.getElementById("cdnum").textContent=diff>0?diff:"0";
+
+// render
+buildItin();buildBudget();buildTodos();buildInfo();
+
+// events
+document.addEventListener("click",function(e){
+var el=e.target;
+var dh=el.closest(".dh");
+if(dh){var day=dh.getAttribute("data-d");document.getElementById("dc"+day).classList.toggle("open");return;}
+var ct=el.closest(".ct");
+if(ct){var k=ct.getAttribute("data-k");document.getElementById("cl"+k).classList.toggle("sh");return;}
+var pb=el.closest(".pb2");
+if(pb){
+var k=pb.getAttribute("data-k");
+var inp=document.getElementById("in"+k);
+var txt=inp.value.trim();
+if(txt){
+if(!comments[k])comments[k]=[];
+var name=prompt("Your name:");
+if(!name)name="Guest";
+comments[k].push({n:name,t:txt});
+inp.value="";
+buildItin();
+document.getElementById("dc"+DAYS[parseInt(k.split("_")[0])].day).classList.add("open");
+document.getElementById("cl"+k).classList.add("sh");
+}
+return;
+}
+var cb=el.closest(".cb");
+if(cb){cb.classList.toggle("ck");cb.innerHTML=cb.classList.contains("ck")?"&#10003;":"";return;}
+var nb=el.closest(".nb");
+if(nb){
+var v=nb.getAttribute("data-v");
+var views=document.querySelectorAll(".vw");
+var tabs=document.querySelectorAll(".nb");
+for(var i=0;i<views.length;i++)views[i].classList.remove("on");
+for(var i=0;i<tabs.length;i++)tabs[i].classList.remove("on");
+document.getElementById("v-"+v).classList.add("on");
+nb.classList.add("on");
+return;
+}
+});
+document.addEventListener("keydown",function(e){
+if(e.key==="Enter"&&e.target.tagName==="INPUT"&&e.target.closest(".ci")){
+var btn=e.target.parentNode.querySelector(".pb2");
+if(btn)btn.click();
+}
+});
+})();
+</script>
+
+</body></html>
