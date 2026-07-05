@@ -37,7 +37,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ap{font-size:12px;padding:8px 10px;border-radius:8px;background:var(--bg)}
 .ap .lb{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--txm);margin-bottom:2px}.ap .vl{color:var(--tx);line-height:1.4}
-.pb{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--purple);background:var(--pl);padding:3px 8px;border-radius:12px;margin-left:8px;font-weight:500}
+.pb{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--purple);background:var(--pl);padding:3px 8px;border-radius:12px;margin-left:8px;font-weight:500;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.pb:hover{background:var(--purple);color:#fff}
 .cs{margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd)}
 .ct{font-size:12px;color:var(--blue);cursor:pointer;font-weight:500}.ct:hover{text-decoration:underline}
 .cl{margin-top:8px;display:none}.cl.sh{display:block}
@@ -192,7 +193,7 @@ h+='<div class="act-flex">';
 if(a.img){h+='<img class="act-img" src="'+a.img+'" alt="" loading="lazy">';}
 h+='<div class="act-main">';
 h+='<div class="at">'+esc(a.time)+'</div>';
-h+='<div class="atl">'+a.title+(a.photo?' <span class="pb">&#128247; Photo</span>':'')+(a.yt?'<a class="yt-link" href="'+a.yt+'" target="_blank">&#128250; Watch</a>':'')+(a.stroller==="ok"?' <span class="sb-ok">Stroller \u2705</span>':a.stroller==="partial"?' <span class="sb-warn">Stroller \u26a0\ufe0f</span>':a.stroller==="no"?' <span class="sb-no">Stroller \u274c</span>':'')+'</div>';
+h+='<div class="atl">'+a.title+(a.photo?' <a class="pb" href="https://www.google.com/search?tbm=isch&q='+encodeURIComponent(a.title.replace(/[^a-zA-Z ]/g,''))+'" target="_blank">&#128247; Photo</a>':'')+(a.yt?'<a class="yt-link" href="'+a.yt+'" target="_blank">&#128250; Watch</a>':'')+(a.stroller==="ok"?' <span class="sb-ok">Stroller \u2705</span>':a.stroller==="partial"?' <span class="sb-warn">Stroller \u26a0\ufe0f</span>':a.stroller==="no"?' <span class="sb-no">Stroller \u274c</span>':'')+'</div>';
 h+='<div class="ar">&#128161; '+esc(a.rationale)+'</div>';
 h+='<div class="ag">';
 h+='<div class="ap"><div class="lb">Getting there</div><div class="vl">'+esc(a.how)+'</div></div>';
