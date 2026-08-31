@@ -290,6 +290,63 @@ document.getElementById("v-todos").innerHTML=h;
 }
 function buildInfo(){
 var h='<h2 style="font-size:18px;margin-bottom:16px">Essential Info</h2><div class="ig">';
+
+h+='<div class="ic" style="grid-column:1/-1;margin-bottom:16px"><h4>&#128206; Documents & Quick Links</h4>';
+
+h+='<table style="width:100%;font-size:12px;border-collapse:collapse">';
+h+='<tr style="border-bottom:2px solid #ddd;font-weight:600;color:#666;font-size:10px;text-transform:uppercase"><td style="padding:6px">Day</td><td>What</td><td>Links</td><td>Ref / Notes</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D2</td><td>Lion King</td>';
+h+='<td><a href="trip_docs/lion_king_etickets.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">E-Tickets (7)</a></td>';
+h+='<td style="color:#888;font-size:11px">Ref: TLK-0599DB06. Royal Circle A16-19 + B17-19. Tue 15 Sep, 19:30</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D3</td><td>Stonehenge + Bath</td>';
+h+='<td><a href="trip_docs/stonehenge_receipt.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">Receipt</a> | <a href="trip_docs/stonehenge_bath_voucher.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">Voucher</a></td>';
+h+='<td style="color:#888;font-size:11px">Order: ZNP446990. Golden Tours. Bus Stop 1, Victoria. 08:30</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D4</td><td>Hull Trains (outbound)</td>';
+h+='<td><a href="trip_docs/hull_trains_etickets.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">E-Tickets</a> | <a href="trip_docs/hull_trains_receipt.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">Receipt</a> | <a href="trip_docs/hull_trains_seating_plan.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">Seats</a></td>';
+h+='<td style="color:#888;font-size:11px">Ref: 26S1X2MTRF. Coach C. 09:18 King\u2019s Cross to Retford</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D4</td><td>Sam\u2019s Wedding</td>';
+h+='<td><a href="https://withjoy.com/seangshen-and-lingwei" target="_blank" style="color:#2C3E6B;font-weight:600">Wedding Website</a></td>';
+h+='<td style="color:#888;font-size:11px">Password: nbf3tz. Hodsock Priory, Blyth S81 0TY</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D5</td><td>Hull Trains (return)</td>';
+h+='<td><a href="trip_docs/hull_trains_etickets.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">E-Tickets</a></td>';
+h+='<td style="color:#888;font-size:11px">Ref: 26S1X2MTRF. Coach C. 13:46 Retford to King\u2019s Cross</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D7</td><td>Eurostar</td>';
+h+='<td><a href="trip_docs/eurostar_jess_ng_tien_hui.pdf" target="_blank" style="color:#2C3E6B;font-weight:600">Jess</a>';
+h+=' | <a href="trip_docs/eurostar_josh_lee_seat72.jpeg" target="_blank" style="color:#2C3E6B;font-weight:600">Josh</a>';
+h+=' | <a href="trip_docs/eurostar_edison_lee_seat71.jpeg" target="_blank" style="color:#2C3E6B;font-weight:600">Edison</a>';
+h+=' | <a href="trip_docs/eurostar_phek_wei_seat76.jpeg" target="_blank" style="color:#2C3E6B;font-weight:600">Phek Wei</a>';
+h+=' | <a href="trip_docs/eurostar_hana_nguyen_seat86.jpeg" target="_blank" style="color:#2C3E6B;font-weight:600">Hana</a>';
+h+=' | <a href="trip_docs/eurostar_alexis_lee_seat81.jpeg" target="_blank" style="color:#2C3E6B;font-weight:600">Alexis</a>';
+h+=' | <a href="trip_docs/eurostar_yan_xin_seat85.jpeg" target="_blank" style="color:#2C3E6B;font-weight:600">Yan Xin</a></td>';
+h+='<td style="color:#888;font-size:11px">Ref: V4QJMR. Train 9024, Coach 6. 12:31 > 15:59</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D8</td><td>Le Gabriel / Le Train Bleu</td>';
+h+='<td><a href="trip_docs/le_gabriel_reservation.png" target="_blank" style="color:#8B4066;font-weight:600">Reservation</a></td>';
+h+='<td style="color:#888;font-size:11px">2 personnes, 19:45 Mon 21 Sep. Reconfirm 48hrs before! Dress code: chic</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D9</td><td>Disneyland Paris</td>';
+h+='<td><a href="trip_docs/disneyland_receipt.pdf" target="_blank" style="color:#8B4066;font-weight:600">Receipt</a>';
+h+=' | <a href=\"trip_docs/disneyland_ticket_1.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 1</a> | <a href=\"trip_docs/disneyland_ticket_2.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 2</a> | <a href=\"trip_docs/disneyland_ticket_3.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 3</a> | <a href=\"trip_docs/disneyland_ticket_4.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 4</a> | <a href=\"trip_docs/disneyland_ticket_5.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 5</a> | <a href=\"trip_docs/disneyland_ticket_6.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 6</a> | <a href=\"trip_docs/disneyland_ticket_7.pdf\" target=\"_blank\" style=\"color:#8B4066;font-weight:600\">Ticket 7</a>';
+h+='</td>';
+h+='<td style="color:#888;font-size:11px">Booking: 1433814237706647. 5 Adults + 2 Children. Tue 22 Sep</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D10</td><td>Versailles</td>';
+h+='<td><a href="trip_docs/versailles_tickets.pdf" target="_blank" style="color:#8B4066;font-weight:600">Tickets (7)</a></td>';
+h+='<td style="color:#888;font-size:11px">Transaction: 199976509. 10:00 Entrance A. Bring driving license for carts!</td></tr>';
+
+h+='<tr style="border-bottom:1px solid #eee"><td style="padding:5px 6px;font-weight:600">D11</td><td>Louvre</td>';
+h+='<td><a href="trip_docs/louvre_tickets_group1.pdf" target="_blank" style="color:#8B4066;font-weight:600">Tickets (6pax)</a> | <a href="trip_docs/louvre_tickets_group2.pdf" target="_blank" style="color:#8B4066;font-weight:600">Josh + Audio</a></td>';
+h+='<td style="color:#888;font-size:11px">Order: C262420001777/1860. 10:30 Carrousel entrance. Kids bring passport!</td></tr>';
+
+h+='</table>';
+h+='</div>';
+
 h+='<div class="ic"><h4>&#127968; Accommodation</h4><li><b>London (6 nights):</b> County Street flat 59, SE1. Near Waterloo.</li><li><b>Paris (5 nights):</b> Rue Daumier, 15th arr. 15 min walk to Eiffel Tower.</li></div>';
 h+='<div class="ic"><h4>&#9992; Flights</h4><li><b>Out:</b> MH004, KUL 09:50 &rarr; LHR T4 16:35 (14 Sep)</li><li><b>Return:</b> MH021, CDG T2A 11:20 &rarr; KUL 06:10+1 (25 Sep)</li></div>';
 h+='<div class="ic"><h4>&#9925; Weather (Sep)</h4><li>London: 12-20&deg;C. Pack light jacket.</li><li>Paris: 13-21&deg;C. Layers recommended.</li><li>Comfortable walking shoes essential!</li></div>';
