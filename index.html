@@ -102,6 +102,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .qv-alert{background:#fff3e0;color:#e65100;font-size:9px;padding:1px 4px;border-radius:3px;font-weight:600;margin-left:3px}
 .qv-date{font-size:10px;color:#666;font-weight:400}
 .qv-sep{grid-column:1/-1;padding:6px 12px 2px;font-weight:700;font-size:11px;color:#fff;background:#8B4066;margin:4px 0 0}
+
+@media(max-width:768px){
+.top{padding:10px 16px}
+.nw{top:48px}
+.nb{padding:10px 14px;font-size:12px}
+.dc.open .dh{top:88px}
+.dh{padding:10px 12px;gap:8px}
+.ac{padding:10px 12px}
+.ag{grid-template-columns:1fr}
+.at{font-size:11px}
+.atl{font-size:14px}
+.ar{font-size:11px;padding:6px 10px}
+.ap .lb{font-size:10px}
+.ap .vl{font-size:12px}
+.wrap{padding:12px 8px}
+
+.di p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;font-size:11px}
+.di h3{font-size:13px}
+.dn{width:28px;height:28px;font-size:10px;line-height:28px}
+.cs{font-size:11px}
+.cm{font-size:11px}
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
@@ -241,22 +263,33 @@ h+='<span class="dtired">'+d.tired+'</span>';
 h+=''+(d.route?'<a class="route-btn" href="'+d.route+'" target="_blank" onclick="event.stopPropagation()">&#128506; Route</a>':'')+'<span class="close-hint">tap to close</span><span class="chv">&#9660;</span></div>';
 h+='<div class="db">';
 h+='<div style="padding:10px 20px;background:var(--gl);font-size:13px;color:var(--green);font-weight:600;border-bottom:1px solid var(--bd)">'+d.cost+' per person</div>';
+
+var bk='';for(var b=0;b<d.acts.length;b++){if(d.acts[b].tickets&&d.acts[b].tickets.indexOf('BOOKED')>-1){var tkt=d.acts[b].tickets;var links=tkt.match(/<a[^>]*>.*?<\/a>/g);if(links){bk+='<span style="margin-right:8px">'+d.acts[b].title.substring(0,25)+': ';for(var bl=0;bl<links.length;bl++)bk+=links[bl]+' ';bk+='</span>';}}}
+if(bk)h+='<div style="padding:8px 16px;background:#e8f5e9;font-size:11px;border-bottom:1px solid var(--bd);display:flex;flex-wrap:wrap;gap:4px;align-items:center"><span style="font-weight:700;color:#2e7d32;margin-right:4px">\ud83c\udfab Tickets:</span>'+bk+'</div>';
+
 for(var j=0;j<d.acts.length;j++){
 var a=d.acts[j];
 var k=i+"_"+j;
 var cl=comments[k]||[];
+if(a.title.indexOf('Wake up')>-1||a.title.indexOf('LEAVE')>-1){
+h+='<div class="wake-banner" style="display:flex;align-items:center;gap:10px;padding:8px 16px;font-size:13px;'+(a.title.indexOf('LEAVE')>-1?'background:#fff3e0;border-left:4px solid #e65100':'background:#f5f5f5;border-left:4px solid #999')+'">';
+h+='<span style="font-weight:800;font-size:16px;min-width:50px;'+(a.title.indexOf('LEAVE')>-1?'color:#e65100':'color:#555')+'">'+a.time+'</span>';
+h+='<span style="font-weight:600;'+(a.title.indexOf('LEAVE')>-1?'color:#e65100':'color:#555')+'">'+a.title+'</span>';
+h+='</div>';
+continue;
+}
 h+='<div class="ac">';
 h+='<div class="act-flex">';
 if(a.img){h+='<img class="act-img" src="'+a.img+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">';}
 h+='<div class="act-main">';
 h+='<div class="at">'+esc(a.time)+'</div>';
 h+='<div class="atl">'+a.title+(a.photo?' <a class="pb" href="https://www.google.com/search?tbm=isch&q='+encodeURIComponent(a.title.replace(/[^a-zA-Z ]/g,''))+'" target="_blank">&#128247; Photo</a>':'')+(a.yt?'<a class="yt-link" href="'+a.yt+'" target="_blank">&#128250; Watch</a>':'')+(a.link?'<a class="yt-link" href="'+a.link+'" target="_blank">🎫 Book</a>':'')+(a.stroller==="ok"?' <span class="sb-ok">Stroller ✅</span>':a.stroller==="partial"?' <span class="sb-warn">Stroller \u26a0\ufe0f</span>':a.stroller==="no"?' <span class="sb-no">Stroller \u274c</span>':'')+'</div>';
-h+='<div class="ar">&#128161; '+esc(a.rationale)+'</div>';
+if(a.rationale&&!a.tips)h+='<div class="ar">&#128161; '+esc(a.rationale)+'</div>';
 h+='<div class="ag">';
-h+='<div class="ap"><div class="lb">Getting there</div><div class="vl">'+esc(a.how)+'</div></div>';
-h+='<div class="ap"><div class="lb">Tickets</div><div class="vl">'+a.tickets+'</div></div>';
-h+='<div class="ap"><div class="lb">Tips</div><div class="vl">'+esc(a.tips)+'</div></div>';
-h+='<div class="ap"><div class="lb">Cost</div><div class="vl">'+esc(a.cost)+'</div></div>';
+if(a.how)h+='<div class="ap"><div class="lb">Getting there</div><div class="vl">'+esc(a.how)+'</div></div>';
+if(a.tickets)h+='<div class="ap"><div class="lb">Tickets</div><div class="vl">'+a.tickets+'</div></div>';
+if(a.tips)h+='<div class="ap"><div class="lb">Tips</div><div class="vl">'+esc(a.tips)+'</div></div>';
+if(a.cost)h+='<div class="ap"><div class="lb">Cost</div><div class="vl">'+esc(a.cost)+'</div></div>';
 h+='</div>';
 h+='<div class="cs"><span class="ct" data-k="'+k+'">&#128172; '+(cl.length>0?cl.length+' comment'+(cl.length>1?'s':''):'Add comment')+'</span>';
 h+='<div class="cl" id="cl'+k+'">';
@@ -385,7 +418,7 @@ var wasOpen=el2.classList.contains("open");
 var allCards=document.querySelectorAll(".dc.open");
 for(var k=0;k<allCards.length;k++){if(allCards[k]!==el2)allCards[k].classList.remove("open");}
 el2.classList.toggle("open");
-setTimeout(function(){el2.scrollIntoView({behavior:"smooth",block:"start"});},50);
+setTimeout(function(){var offset=window.innerWidth<=768?88:115;var top=el2.getBoundingClientRect().top+window.pageYOffset-offset;window.scrollTo({top:top,behavior:"smooth"});},50);
 return;}
 var ct=el.closest(".ct");
 if(ct){var k=ct.getAttribute("data-k");document.getElementById("cl"+k).classList.toggle("sh");return;}
