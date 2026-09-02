@@ -106,12 +106,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 <body>
 
 <div class="top"><div class="top-in"><div><h1>&#9992; London &amp; Paris Family Trip</h1><div class="meta">14-25 Sep 2026 | Josh, Jess, Phek Wei, Hana, Edison + kids</div></div><div class="cd"><div class="n" id="cdnum">--</div><div class="l">days to go</div></div></div></div>
-<div class="nw"><div class="nt"><div class="nb" data-v="summary">&#128203; Summary</div><div class="nb on" data-v="itin">&#128197; Itinerary</div><div class="nb" data-v="todos">&#9745; To Do</div><div class="nb" data-v="info">&#8505;&#65039; Essentials</div></div></div>
+<div class="nw"><div class="nt"><div class="nb" data-v="summary">&#128203; Summary</div><div class="nb on" data-v="itin">&#128197; Itinerary</div><div class="nb" data-v="info">&#8505;&#65039; Essentials</div></div></div>
 <div class="wrap">
 <div class="vw" id="v-summary"></div>
 <div class="vw on" id="v-itin"></div>
 
-<div class="vw" id="v-todos"></div>
+
 <div class="vw" id="v-info"></div>
 </div>
 <script>
@@ -147,7 +147,7 @@ try {
     db.ref("todos_checked").on("value", function(snapshot) {
       var data = snapshot.val();
       todosChecked = data || {};
-      renderTodosState();
+      
     });
   }
 } catch(e) { console.log("Firebase not configured yet"); }
@@ -373,7 +373,7 @@ function renderTodosState(){
 
 var trip=new Date(2026,8,14);var now=new Date();var diff=Math.ceil((trip-now)/(86400000));
 document.getElementById("cdnum").textContent=diff>0?diff:"0";
-buildItin();buildTodos();renderTodosState();buildInfo();
+buildItin();buildInfo();
 document.addEventListener("click",function(e){
 var el=e.target;
 var dh=el.closest(".dh");
