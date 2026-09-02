@@ -26,11 +26,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .dcost{font-size:11px;font-weight:600;color:var(--green);background:var(--gl);padding:4px 8px;border-radius:20px;margin-right:4px}
 .dtired{font-size:14px;margin-right:4px}
 .chv{color:var(--txm);transition:transform 0.3s;font-size:12px;display:inline-block}
-.dc.open .dh{position:sticky;top:115px;z-index:100;background:var(--sf,#fff);box-shadow:0 2px 8px rgba(0,0,0,0.12);border-bottom:1px solid var(--bd,#e0e0e0)}
+.dc.open .dh{position:-webkit-sticky;position:sticky;top:0;z-index:100;background:var(--sf,#fff);box-shadow:0 2px 8px rgba(0,0,0,0.12);border-bottom:1px solid var(--bd,#e0e0e0);border-radius:0}
+.dc.open .dh::before{content:'';position:absolute;top:-20px;left:-1px;right:-1px;height:21px;background:inherit;z-index:-1}
+
 .dc.open .dh .chv{transform:rotate(180deg)}
-.dc.open .dc.open .close-hint{display:inline;font-size:10px;color:var(--txm,#999);font-weight:400;margin-left:auto}
-.dc.open .db{display:block}
-.close-hint{display:none}
+.dc.open{margin-top:0!important;border-top:0!important;border-radius:0 0 var(--r) var(--r)!important}
+
+.dc.open .db{display:block;padding-top:8px}
 .db{display:none;border-top:1px solid var(--bd)}.dc.open .ac{padding:16px 20px;border-bottom:1px solid var(--bd)}.ac:last-child{border-bottom:none}
 .at{display:inline-block;background:var(--bl);color:var(--blue);font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:6px}
 .atl{font-size:17px;font-weight:700;margin-bottom:8px}
@@ -107,7 +109,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .top{padding:10px 16px}
 .nw{top:48px}
 .nb{padding:10px 14px;font-size:12px}
-.dc.open .dh{top:88px}
 .dh{padding:10px 12px;gap:8px}
 .ac{padding:10px 12px}
 .ag{grid-template-columns:1fr}
@@ -124,6 +125,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .cs{font-size:11px}
 .cm{font-size:11px}
 }
+
+
+.close-hint{display:none;font-size:12px;color:var(--txm,#999);font-weight:400;margin-left:auto}
+.dc.open .close-hint{display:inline}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
@@ -418,7 +423,19 @@ var wasOpen=el2.classList.contains("open");
 var allCards=document.querySelectorAll(".dc.open");
 for(var k=0;k<allCards.length;k++){if(allCards[k]!==el2)allCards[k].classList.remove("open");}
 el2.classList.toggle("open");
-setTimeout(function(){var offset=window.innerWidth<=768?88:115;var top=el2.getBoundingClientRect().top+window.pageYOffset-offset;window.scrollTo({top:top,behavior:"smooth"});},50);
+if(!wasOpen){
+var fb=document.getElementById("float-close");if(fb)fb.style.display="flex";
+}else{
+var fb=document.getElementById("float-close");if(fb)fb.style.display="none";
+}
+requestAnimationFrame(function(){requestAnimationFrame(function(){
+var hdr=document.querySelector('.top');
+var nav=document.querySelector('.nw');
+var offset=(hdr?hdr.getBoundingClientRect().bottom:0);
+if(nav){var nb=nav.getBoundingClientRect();if(nb.bottom>offset)offset=nb.bottom;}
+var cardTop=el2.getBoundingClientRect().top+window.pageYOffset;
+window.scrollTo({top:cardTop-offset,behavior:'smooth'});
+});});
 return;}
 var ct=el.closest(".ct");
 if(ct){var k=ct.getAttribute("data-k");document.getElementById("cl"+k).classList.toggle("sh");return;}
@@ -498,5 +515,34 @@ if(btn)btn.click();
 
 
 
+
+
+
+<div id="float-close" onclick="var open=document.querySelector('.dc.open');if(open){var dh=open.querySelector('.dh');if(dh)dh.click();}" style="display:none;position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:#2C3E6B;color:#fff;font-size:20px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:500;user-select:none;-webkit-tap-highlight-color:transparent">✕</div>
+
+
+
+
+
+<script>
+(function(){
+function setStickyTop(){
+var hdr=document.querySelector('.top');
+var nav=document.querySelector('.nw');
+var h=0;
+if(hdr)h+=hdr.offsetHeight;
+if(nav)h+=nav.offsetHeight;
+var el=document.getElementById('sticky-offset-css');
+if(el)el.remove();
+var s=document.createElement('style');
+s.id='sticky-offset-css';
+s.textContent='.dc.open .dh{top:'+h+'px!important}';
+document.head.appendChild(s);
+}
+setStickyTop();
+window.addEventListener('resize',setStickyTop);
+window.addEventListener('orientationchange',function(){setTimeout(setStickyTop,300);});
+})();
+</script>
 </body>
 </html>
