@@ -12,7 +12,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .top-in{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .top h1{font-size:18px;font-weight:700}.top .meta{font-size:12px;opacity:0.8;margin-top:2px}
 .cd{text-align:right}.cd .n{font-size:24px;font-weight:700}.cd .l{font-size:11px;opacity:0.7}
-.nw{background:var(--sf);border-bottom:1px solid var(--bd);position:sticky;top:68px;z-index:999}
+.nw{background:var(--sf);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:999}
 .nt{max-width:900px;margin:0 auto;display:flex;overflow-x:auto;padding:0 16px}
 .nb{padding:14px 20px;font-size:13px;font-weight:600;color:var(--txm);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s}
 .nb:hover{color:var(--tx)}.nb.on{color:var(--blue);border-bottom-color:var(--blue)}
@@ -107,9 +107,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 
 @media(max-width:768px){
 .top{padding:10px 16px}
-.nw{top:48px}
 .nb{padding:10px 14px;font-size:12px}
-.dh{padding:10px 12px;gap:8px}
+.dh{padding:10px 12px;gap:6px;overflow:hidden}
 .ac{padding:10px 12px}
 .ag{grid-template-columns:1fr}
 .at{font-size:11px}
@@ -124,10 +123,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .dn{width:28px;height:28px;font-size:10px;line-height:28px}
 .cs{font-size:11px}
 .cm{font-size:11px}
+
+.dc.open .close-hint{display:none}
 }
 
 
 .close-hint{display:none;font-size:12px;color:var(--txm,#999);font-weight:400;margin-left:auto}
+.dc.open .close-hint{display:inline}
+
+.close-hint{display:none;font-size:12px;color:var(--txm,#999);font-weight:400;white-space:nowrap}
 .dc.open .close-hint{display:inline}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -423,18 +427,14 @@ var wasOpen=el2.classList.contains("open");
 var allCards=document.querySelectorAll(".dc.open");
 for(var k=0;k<allCards.length;k++){if(allCards[k]!==el2)allCards[k].classList.remove("open");}
 el2.classList.toggle("open");
-if(!wasOpen){
-var fb=document.getElementById("float-close");if(fb)fb.style.display="flex";
-}else{
-var fb=document.getElementById("float-close");if(fb)fb.style.display="none";
-}
 requestAnimationFrame(function(){requestAnimationFrame(function(){
-var hdr=document.querySelector('.top');
-var nav=document.querySelector('.nw');
-var offset=(hdr?hdr.getBoundingClientRect().bottom:0);
-if(nav){var nb=nav.getBoundingClientRect();if(nb.bottom>offset)offset=nb.bottom;}
-var cardTop=el2.getBoundingClientRect().top+window.pageYOffset;
-window.scrollTo({top:cardTop-offset,behavior:'smooth'});
+var topEl=document.querySelector('.top');
+var nwEl=document.querySelector('.nw');
+var offset=0;
+if(topEl)offset+=topEl.getBoundingClientRect().height;
+if(nwEl)offset+=nwEl.getBoundingClientRect().height;
+var cardTop=el2.getBoundingClientRect().top+window.pageYOffset-offset;
+window.scrollTo({top:cardTop,behavior:'smooth'});
 });});
 return;}
 var ct=el.closest(".ct");
@@ -518,7 +518,7 @@ if(btn)btn.click();
 
 
 
-<div id="float-close" onclick="var open=document.querySelector('.dc.open');if(open){var dh=open.querySelector('.dh');if(dh)dh.click();}" style="display:none;position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:#2C3E6B;color:#fff;font-size:20px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:500;user-select:none;-webkit-tap-highlight-color:transparent">✕</div>
+
 
 
 
@@ -526,31 +526,25 @@ if(btn)btn.click();
 
 <script>
 (function(){
-function setStickyTop(){
-var hdr=document.querySelector('.top');
-var nav=document.querySelector('.nw');
-var h=0;
-if(hdr)h+=hdr.offsetHeight;
-if(nav)h+=nav.offsetHeight;
-var el=document.getElementById('sticky-offset-css');
+function measureAndApply(){
+var top=document.querySelector('.top');
+var nw=document.querySelector('.nw');
+if(!top||!nw)return;
+var topH=top.getBoundingClientRect().height;
+var nwH=nw.getBoundingClientRect().height;
+nw.style.top=topH+'px';
+var el=document.getElementById('dynamic-positions');
 if(el)el.remove();
 var s=document.createElement('style');
-s.id='sticky-offset-css';
-var gap=20;
-var openDc=document.querySelector('.dc.open');
-if(openDc){
-var dcStyle=getComputedStyle(openDc);
-gap=parseInt(dcStyle.marginTop)||0;
-gap+=parseInt(dcStyle.borderTopWidth)||0;
-gap+=5;
-}
-s.textContent='.dc.open .dh{top:'+h+'px!important}.dc.open .dh::before{content:\'\';position:absolute;top:-'+gap+'px;left:-2px;right:-2px;height:'+(gap+1)+'px;background:inherit;z-index:-1}';
+s.id='dynamic-positions';
+s.textContent='.dc.open .dh{top:'+(topH+nwH)+'px!important}';
 document.head.appendChild(s);
 }
-setStickyTop();
-window.addEventListener('resize',setStickyTop);
-window.addEventListener('orientationchange',function(){setTimeout(setStickyTop,300);});
-setInterval(function(){var o=document.querySelector('.dc.open');if(o)setStickyTop();},500);
+measureAndApply();
+window.addEventListener('resize',measureAndApply);
+window.addEventListener('orientationchange',function(){setTimeout(measureAndApply,300);});
+setInterval(function(){measureAndApply();},1000);
+})();
 </script>
 </body>
 </html>
