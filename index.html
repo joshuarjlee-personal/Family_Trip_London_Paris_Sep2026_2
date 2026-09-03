@@ -105,6 +105,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 .qv-date{font-size:10px;color:#666;font-weight:400}
 .qv-sep{grid-column:1/-1;padding:6px 12px 2px;font-weight:700;font-size:11px;color:#fff;background:#8B4066;margin:4px 0 0}
 
+
+.close-hint{display:none;font-size:11px;color:#999;white-space:nowrap;margin-left:auto;flex-shrink:0}
+.dc.open .close-hint{display:inline}
 @media(max-width:768px){
 .top{padding:10px 16px}
 .nb{padding:10px 14px;font-size:12px}
@@ -126,13 +129,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;bac
 
 .dc.open .close-hint{display:none}
 }
-
-
-.close-hint{display:none;font-size:12px;color:var(--txm,#999);font-weight:400;margin-left:auto}
-.dc.open .close-hint{display:inline}
-
-.close-hint{display:none;font-size:12px;color:var(--txm,#999);font-weight:400;white-space:nowrap}
-.dc.open .close-hint{display:inline}
+.dc.open 
+.dc.open 
+.dc.open 
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
@@ -269,7 +268,7 @@ h+='<div class="dc" id="dc'+d.day+'"><div class="dh" data-d="'+d.day+'">';
 h+='<div class="dn" style="background:'+d.color+'">D'+d.day+'</div>';
 h+='<div class="di"><h3>'+esc(d.date)+" - "+esc(d.loc)+'</h3><p>'+esc(d.summary)+'</p></div>';
 h+='<span class="dtired">'+d.tired+'</span>';
-h+=''+(d.route?'<a class="route-btn" href="'+d.route+'" target="_blank" onclick="event.stopPropagation()">&#128506; Route</a>':'')+'<span class="close-hint">tap to close</span><span class="chv">&#9660;</span></div>';
+h+=''+(d.route?'<a class="route-btn" href="'+d.route+'" target="_blank" onclick="event.stopPropagation()">&#128506; Route</a>':'')+'<span class="close-hint">&#9650; close</span><span class="chv">&#9660;</span></div>';
 h+='<div class="db">';
 h+='<div style="padding:10px 20px;background:var(--gl);font-size:13px;color:var(--green);font-weight:600;border-bottom:1px solid var(--bd)">'+d.cost+' per person</div>';
 
